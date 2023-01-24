@@ -19,6 +19,9 @@ export default {
 
 <template>
     <main>
+    <section id="pokemons" class="container text-center">
+        <div class="row g-3">
+        
         <poke-list v-for="pokemon in pokemons"
     
          :image="pokemon.imageUrl"
@@ -28,6 +31,9 @@ export default {
          @key="pokemon.id">
     
         </poke-list>
+    </div>
+  </section>
+    
     </main>
 </template>
 

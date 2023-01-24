@@ -11,18 +11,16 @@ export default {
 </script>
 
 <template>
-    <section id="pokemons" class="container">
-        <div class="row row-cols-3 g-3">
-            <div class="col">
+            <div class="col-3 card">
                 <img :src="image" alt="">
-                <div> {{ number }} </div>
+                <div> #{{ number }} </div>
                 <h2> {{ name }} </h2>
-                <div>  {{ type1 }} </div>
+                <div class="fw-bold">  {{ type1 }} </div>
             </div>
-        </div>
-  </section>
 </template>
 
 <style scoped>
-
+    img {
+        height: 300px;
+    }
 </style>
