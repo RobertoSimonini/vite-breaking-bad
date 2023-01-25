@@ -13,7 +13,7 @@ export default {
 <template>
     <main>
     <section id="pokemons" class="container text-center my-4">
-        <div class="row g-4">
+        <div class="row g-4 justify-content-between">
         
         <poke-list v-for="pokemon in pokemons"
     
@@ -31,5 +31,14 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+  #pokemons {
+    background-color: rgb(90,93,102);
+    padding: 2rem;
+    border-radius: 10px;
 
+  }
+
+ 
+
+  
 </style>

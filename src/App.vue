@@ -3,9 +3,10 @@ import AppMain from './components/AppMain.vue'
 import AppHeader from './components/AppHeader.vue'
 import {store} from './store.js'
 import axios from 'axios';
+import PokeType from './components/PokeType.vue';
 export default {
   name: 'App',
-  components: {AppMain, AppHeader},
+  components: {AppMain, AppHeader, PokeType},
   data () {
     return {
       store
@@ -30,6 +31,7 @@ this.fetchPokemon(store.apiUrl)
 
 <template>
   <app-header></app-header>
+  <poke-type></poke-type>
   <app-main></app-main>
 </template>
 
