@@ -3,7 +3,7 @@ export default {
     name:'PokeType',
     data () {
         return {
-            types : [
+            genres : [
                         "Steel",
                         "Fire",
                         "Fairy",
@@ -22,23 +22,24 @@ export default {
                         "Flying",
                         "Water",
                         "Ground"
-            ]
+            ],
+            type: ''
         }
-    }
+    },
+    emits: ['change-type'],
+    
 }
 </script>
 
 
 <template>
-    <select class="form-select w-25" aria-label="Default select example">
-        <option  selected>All</option>
-        <option v-for="type in types"> {{type}} </option>
+    <select v-model="type" @change="$emit('change-type', type)" class="form-select w-25" aria-label="Default select example">
+        <option selected>All</option>
+        <option v-for="genre in genres"> {{genre}} </option>
         
     </select>
 
 </template>
-
-
 
 <style lang="scss" scoped>
     select {

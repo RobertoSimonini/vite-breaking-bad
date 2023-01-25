@@ -9,7 +9,8 @@ export default {
   components: {AppMain, AppHeader, PokeType},
   data () {
     return {
-      store
+      store,
+      typeFilter: ''
     }
   },
 
@@ -19,8 +20,13 @@ export default {
     .then(response => {
         store.pokemons = response.data.docs;
     })
+  },
+
+  onTypeChange (type){
+    this.typeFilter = type;
   }
 },
+
 
 created (){
 this.fetchPokemon(store.apiUrl)
@@ -31,7 +37,7 @@ this.fetchPokemon(store.apiUrl)
 
 <template>
   <app-header></app-header>
-  <poke-type></poke-type>
+  <poke-type @change-type="onTypeChange"></poke-type>
   <app-main></app-main>
 </template>
 
