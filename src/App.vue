@@ -9,8 +9,8 @@ export default {
   components: {AppMain, AppHeader, PokeType},
   data () {
     return {
-      store,
-      typeFilter: ''
+      typeFilter: '',
+      apiUrl: 'https://41tyokboji.execute-api.eu-central-1.amazonaws.com/dev/api/v1/pokemons'
     }
   },
 
@@ -24,12 +24,14 @@ export default {
 
   onTypeChange (type){
     this.typeFilter = type;
+
+    this.apiUrl = `${this.apiUrl}?eq[type1]=${this.typeFilter}`
   }
 },
 
 
 created (){
-this.fetchPokemon(store.apiUrl)
+this.fetchPokemon(this.apiUrl)
 }
 }
 
