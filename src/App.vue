@@ -26,7 +26,8 @@ export default {
   onTypeChange (type){
     this.typeFilter = type;
 
-    this.apiUrl = `${this.apiUrl}?eq[type1]=${this.typeFilter}`
+    const apiUrl = `${this.apiUrl}?eq[type1]=${this.typeFilter}`
+    this.fetchPokemon(apiUrl)
   }
 },
 
