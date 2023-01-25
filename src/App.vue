@@ -28,6 +28,9 @@ export default {
 
     const apiUrl = `${this.apiUrl}?eq[type1]=${this.typeFilter}`
     this.fetchPokemon(apiUrl)
+    if (this.typeFilter === 'All') {
+      this.fetchPokemon(this.apiUrl)
+    }
   }
 },
 
