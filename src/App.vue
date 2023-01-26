@@ -1,44 +1,43 @@
 <script>
-import AppMain from './components/AppMain.vue'
-import AppHeader from './components/AppHeader.vue'
-import {store} from './store.js'
-import axios from 'axios';
-import PokeType from './components/PokeType.vue';
+import AppMain from "./components/AppMain.vue";
+import AppHeader from "./components/AppHeader.vue";
+import { store } from "./store.js";
+import axios from "axios";
+import PokeType from "./components/PokeType.vue";
 export default {
-  name: 'App',
-  components: {AppMain, AppHeader, PokeType},
-  data () {
+  name: "App",
+  components: { AppMain, AppHeader, PokeType },
+  data() {
     return {
       store,
-      typeFilter: '',
-      apiUrl: 'https://41tyokboji.execute-api.eu-central-1.amazonaws.com/dev/api/v1/pokemons'
-    }
+      typeFilter: "",
+      apiUrl:
+        "https://41tyokboji.execute-api.eu-central-1.amazonaws.com/dev/api/v1/pokemons",
+    };
   },
 
   methods: {
-    fetchPokemon (url){
-      axios.get(url)
-    .then(response => {
+    fetchPokemon(url) {
+      axios.get(url).then((response) => {
         store.pokemons = response.data.docs;
-    })
+      });
+    },
+
+    onTypeChange(type) {
+      this.typeFilter = type;
+
+      const apiUrl = `${this.apiUrl}?eq[type1]=${this.typeFilter}`;
+      this.fetchPokemon(apiUrl);
+      if (this.typeFilter === "All") {
+        this.fetchPokemon(this.apiUrl);
+      }
+    },
   },
 
-  onTypeChange (type){
-    this.typeFilter = type;
-
-    const apiUrl = `${this.apiUrl}?eq[type1]=${this.typeFilter}`
-    this.fetchPokemon(apiUrl)
-    if (this.typeFilter === 'All') {
-      this.fetchPokemon(this.apiUrl)
-    }
-  }
-},
-
-created (){
-this.fetchPokemon(this.apiUrl)
-}
-}
-
+  created() {
+    this.fetchPokemon(this.apiUrl);
+  },
+};
 </script>
 
 <template>
@@ -48,8 +47,8 @@ this.fetchPokemon(this.apiUrl)
 </template>
 
 <style>
-  body{
-    min-height: 100vh;
-    background-color: rgb(197,41,25);
-  }
+body {
+  min-height: 100vh;
+  background-color: rgb(197, 41, 25);
+}
 </style>
