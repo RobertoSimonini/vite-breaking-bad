@@ -10,7 +10,6 @@ export default {
   data() {
     return {
       store,
-      typeFilter: "",
       apiUrl:
         "https://41tyokboji.execute-api.eu-central-1.amazonaws.com/dev/api/v1/pokemons",
     };
@@ -24,11 +23,10 @@ export default {
     },
 
     onTypeChange(type) {
-      this.typeFilter = type;
 
-      const apiUrl = `${this.apiUrl}?eq[type1]=${this.typeFilter}`;
+      const apiUrl = `${this.apiUrl}?eq[type1]=${type}`;
       this.fetchPokemon(apiUrl);
-      if (this.typeFilter === "All") {
+      if (type === "All") {
         this.fetchPokemon(this.apiUrl);
       }
     },

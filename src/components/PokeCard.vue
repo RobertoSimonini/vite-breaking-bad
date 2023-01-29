@@ -1,4 +1,5 @@
 <script>
+import { colorMap } from '../data/index'
 export default {
     name: 'Pokedex',
     props: {
@@ -7,18 +8,21 @@ export default {
         name: String,
         type1: String,
     },
+    computed: {
+        bgColor() {
+            return colorMap [this.type1]
+        }
+    }
 
 }
 </script>
 
 <template>
-    <div class="card d-flex align-items-center">
+    <div class="card d-flex align-items-center justify-content-center" :style="`background-color: ${bgColor}`">
         <img :src="image" alt="">
-        <div class="card-text">
             <div class="pt-3"> #{{ number }} </div>
             <h4> {{ name }} </h4>
             <div class="fw-bold"> {{ type1 }} </div>
-        </div>
     </div>
 </template>
 
@@ -26,21 +30,16 @@ export default {
 .card {
     flex-basis: 18%;
     padding: 0;
-    cursor: pointer;
+    height: 300px;
+    
 
     box-shadow: 0 0 10px black;
-
-    .card-text {
-        background-color: #F6DFA4;
-        width: 100%;
-
-    }
+    cursor: pointer;
 }
 
 img {
-    height: 300px;
-    width: 300px;
-    transform: scale(0.5);
+    height: 125px;
+    width: 125px;
     border-radius: 50%;
     background-color: transparent;
     border: 1px solid black;

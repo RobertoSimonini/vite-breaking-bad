@@ -1,44 +1,38 @@
 <script>
-import {store} from '../store'
-import PokeList from './PokeList.vue';
+import { store } from '../store'
+import PokeList from './PokeCard.vue';
 export default {
-    components: {PokeList},
-    data () {
+  components: { PokeList },
+  data() {
     return store
   }
-  
+
 }
 </script>
 
 <template>
-    <main>
+  <main>
     <section id="pokemons" class="container text-center my-4">
-        <div class="row g-4 justify-content-between">
-        
-        <poke-list v-for="pokemon in pokemons"
-    
-         :image="pokemon.imageUrl"
-         :number="pokemon.number"
-         :name="pokemon.name" 
-         :type1="pokemon.type1" 
-         @key="pokemon.id">
-    
+      <div class="row g-4 justify-content-between">
+
+        <poke-list v-for="pokemon in pokemons" :key="pokemon.id"
+        :image="pokemon.imageUrl" 
+        :number="pokemon.number"
+        :name="pokemon.name" 
+        :type1="pokemon.type1" @key="pokemon.id">
+
         </poke-list>
-    </div>
-  </section>
-    
-    </main>
+      </div>
+    </section>
+
+  </main>
 </template>
 
 <style lang="scss" scoped>
-  #pokemons {
-    background-color: rgb(90,93,102);
-    padding: 2rem;
-    border-radius: 10px;
+#pokemons {
+  background-color: rgb(90, 93, 102);
+  padding: 2rem;
+  border-radius: 10px;
 
-  }
-
- 
-
-  
+}
 </style>
